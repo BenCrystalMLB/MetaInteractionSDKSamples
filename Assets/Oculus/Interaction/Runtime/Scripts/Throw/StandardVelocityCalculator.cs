@@ -74,21 +74,21 @@ namespace Oculus.Interaction.Throw
         [SerializeField, Tooltip("Related to buffering velocities; used for final " +
             "velocity calculation.")]
         private BufferingParams _bufferingParams;
-
+         
         [SerializeField, Tooltip("Influence of latest velocities upon release.")]
-        [Range(0.0f, 1.0f)]
-        private float _instantVelocityInfluence = 1.0f;
+        [Range(0.0f, 10f)]
+       public  float _instantVelocityInfluence = 1.0f;
         [SerializeField]
-        [Range(0.0f, 1.0f), Tooltip("Influence of derived velocities trend upon release.")]
-        private float _trendVelocityInfluence = 1.0f;
+        [Range(0.0f, 10f), Tooltip("Influence of derived velocities trend upon release.")]
+        public float _trendVelocityInfluence = 1.0f;
         [SerializeField]
-        [Range(0.0f, 1.0f), Tooltip("Influence of tangential velcities upon release, which" +
+        [Range(0.0f, 10f), Tooltip("Influence of tangential velcities upon release, which" +
             " can be affected by rotational motion.")]
-        private float _tangentialVelocityInfluence = 1.0f;
+        public float _tangentialVelocityInfluence = 1.0f;
         [SerializeField]
-        [Range(0.0f, 1.0f), Tooltip("Influence of external velocities upon release. For hands, " +
+        [Range(0.0f, 10f), Tooltip("Influence of external velocities upon release. For hands, " +
             "this can include fingers.")]
-        private float _externalVelocityInfluence = 0.0f;
+        public float _externalVelocityInfluence = 0.0f;
 
         [SerializeField, Tooltip("Time of anticipated release. Hand tracking " +
             "might experience greater latency compared to controllers.")]
