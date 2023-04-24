@@ -13,6 +13,7 @@ public class BallLauncher : MonoBehaviour
     [SerializeField] private float launchInterval = 5f;
     [SerializeField] private float launchSpeed = 10f;
     [SerializeField] private bool launchEnabled = true;
+    [SerializeField] private Vector3 _customGravity = new Vector3(0, -9.81f, 0);
 
     private float timer;
 
@@ -169,6 +170,24 @@ public class BallLauncher : MonoBehaviour
     {
         launchSpeed = newSpeed;
     }
+
+    public Vector3 CustomGravity
+    {
+        get => _customGravity;
+        set
+        {
+            _customGravity = value;
+            Ball ballComponent = ballObject.GetComponent<Ball>();
+            if (ballComponent != null)
+            {
+                ballComponent.SetCustomGravity(_customGravity);
+            }
+        }
+    }
+
+    
+
+
 
 
 }

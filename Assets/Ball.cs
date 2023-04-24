@@ -26,5 +26,11 @@ public class Ball : MonoBehaviour
         return customGravity;
     }
 
+    public void SetCustomGravity(Vector3 newGravity)
+    {
+        customGravity = newGravity;
+    }
+
+
 
 }

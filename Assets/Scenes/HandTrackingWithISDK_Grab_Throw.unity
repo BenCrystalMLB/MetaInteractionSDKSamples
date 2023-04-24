@@ -2509,7 +2509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476a45c8d1ffad349b303f8fdeb617af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customGravity: {x: 0, y: -0.2, z: 0}
+  customGravity: {x: 0, y: -1, z: 0}
 --- !u!64 &470219349 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 2383871859418639030, guid: 9f0817b3e95d120469af0aa4986cb73d, type: 3}
@@ -3056,9 +3056,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 566574157}
     m_Modifications:
+    - target: {fileID: 1032930287046362244, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362244, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362244, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1032930287046362245, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362247, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1032930287046362249, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_RootOrder
@@ -3912,7 +3928,7 @@ GameObject:
   - component: {fileID: 566574157}
   - component: {fileID: 566574158}
   m_Layer: 0
-  m_Name: BallForCatching
+  m_Name: BallLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3951,6 +3967,7 @@ MonoBehaviour:
   launchInterval: 4
   launchSpeed: 6
   launchEnabled: 1
+  _customGravity: {x: 0, y: -5, z: 0}
 --- !u!114 &577461181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3654262406139657241, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
@@ -6472,6 +6489,54 @@ PrefabInstance:
     - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Name
       value: BallThrowable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930288814188722, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930288814188722, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622939663699562, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622939663699562, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622941349684865, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622941349684865, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622941650541081, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337622941650541081, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115782161509653080, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115782161509653080, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010093232150278499, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._travelSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010093232150278499, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: _travellingData._useFixedTravelTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
