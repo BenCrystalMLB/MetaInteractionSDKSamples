@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4074815, g: 0.40707275, b: 0.41266513, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -535,8 +535,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1717564519}
     - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
+      propertyPath: _stepBackTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
+      propertyPath: _trendVelocityInfluence
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: _instantVelocityInfluence
-      value: 5.26
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
+      propertyPath: _externalVelocityInfluence
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
+      propertyPath: _tangentialVelocityInfluence
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147530562734519489, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
+      propertyPath: _maxPercentZeroSamplesTrendVeloc
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7147530562734519490, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: m_Name
@@ -3058,7 +3078,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1032930287046362244, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Radius
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1032930287046362244, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Material
@@ -9736,7 +9756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6360453197332804381, guid: 01aeabc03dfbd1948a1746ae47d6cd2c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6360453197332804381, guid: 01aeabc03dfbd1948a1746ae47d6cd2c, type: 3}
       propertyPath: m_LocalRotation.w
