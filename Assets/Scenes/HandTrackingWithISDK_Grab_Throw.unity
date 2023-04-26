@@ -1765,7 +1765,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392295775}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.5
@@ -2629,6 +2629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1315630008}
   adjustmentPercentage: 0.11
+  angleThreshold: 30
 --- !u!64 &470219349 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 2383871859418639030, guid: 9f0817b3e95d120469af0aa4986cb73d, type: 3}
