@@ -8,7 +8,8 @@ public class BallTrajectoryAdjustment : MonoBehaviour
     private Vector3 initialVelocity;
     private Vector3 curveAcceleration;
     private Rigidbody ballRigidbody;
-    [SerializeField] private float scaleFactor = 10f;
+    [SerializeField] private float scaleFactor = 1f;
+    [SerializeField] private float curveMax = .1f;
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class BallTrajectoryAdjustment : MonoBehaviour
             // Calculate the lateral acceleration
             Vector3 accelerationProjection = Vector3.Project(totalAcceleration, initialDirection);
             curveAcceleration = (totalAcceleration - accelerationProjection) * scaleFactor;
-            curveAcceleration = Vector3.ClampMagnitude(curveAcceleration, Mathf.Max(curveAcceleration.magnitude, .1f));
+            curveAcceleration = Vector3.ClampMagnitude(curveAcceleration, Mathf.Max(curveAcceleration.magnitude, curveMax));
 
 
             // Print intermediate variables for debugging
