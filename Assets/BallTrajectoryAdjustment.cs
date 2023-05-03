@@ -3,66 +3,112 @@ using UnityEngine;
 public class BallTrajectoryAdjustment : MonoBehaviour
 {
     [SerializeField] public Transform target;
-    [SerializeField] [Range(0.0f, 1.0f)] public float adjustmentPercentage = 0.5f;
-    [SerializeField] [Range(0.0f, 180.0f)] public float angleThreshold = 30.0f; // Angle threshold in degrees
-
-
+    private bool applyCurve = false;
+    [SerializeField] private Transform player;
+    private Vector3 initialVelocity;
+    private Vector3 curveAcceleration;
     private Rigidbody ballRigidbody;
+    [SerializeField] private float scaleFactor = 1f;
+    [SerializeField] private float curveMax = .1f;
 
     private void Start()
     {
         ballRigidbody = GetComponent<Rigidbody>();
     }
 
-    public void AdjustTrajectory()
+    private void CalculateCurveAcceleration()
     {
-        //Debug.Log("Adjusting trajectory");
-
-        // Calculate the direction vector from the ball to the target
         Vector3 directionToTarget = (target.position - transform.position).normalized;
+        Vector3 initialDirection = initialVelocity.normalized;
+        float angle = Vector3.Angle(initialDirection, directionToTarget);
 
-        // Calculate the angle between the ball's velocity and the direction vector to the target
-        float angle = Vector3.Angle(ballRigidbody.velocity, directionToTarget);
-        
-        // Displays the angle of how far off the initial throw is from the target to decide whether the homing algorithm kicks in
-        // Debug.Log("Angle: " + angle);
+        Debug.Log("Angle: " + angle);
 
-        // If the angle is below the threshold, apply the trajectory adjustment
-        if (angle <= angleThreshold)
+        if (angle <= 40f)
         {
+            Debug.Log("Angle within range");
 
-            // Calculate the desired velocity to reach the target
-            Vector3 desiredVelocity = directionToTarget * ballRigidbody.velocity.magnitude;
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float initialVelocityMagnitude = initialVelocity.magnitude;
 
-            // Interpolate between the current velocity and the desired velocity based on the adjustment percentage
-            Vector3 adjustedVelocity = Vector3.Lerp(ballRigidbody.velocity, desiredVelocity, adjustmentPercentage);
+            if (initialVelocityMagnitude == 0f)
+            {
+                Debug.LogWarning("Initial velocity is zero, curve acceleration calculation skipped.");
+                curveAcceleration = Vector3.zero;
+                return;
+            }
 
-            // Apply the adjusted velocity to the ball's Rigidbody
-            ballRigidbody.velocity = adjustedVelocity;
+            float timeToReachTarget = distanceToTarget / initialVelocityMagnitude;
+            Vector3 finalBallPosition = transform.position + initialVelocity * timeToReachTarget;
+            float distanceToFinalBallPosition = Vector3.Distance(finalBallPosition, target.position);
 
+            if (timeToReachTarget == 0f)
+            {
+                Debug.LogWarning("Time to reach target is zero, curve acceleration calculation skipped.");
+                curveAcceleration = Vector3.zero;
+                return;
+            }
+
+            float accelerationMagnitude = (2 * (distanceToFinalBallPosition - distanceToTarget) - initialVelocityMagnitude * timeToReachTarget) / (timeToReachTarget * timeToReachTarget);
+            curveAcceleration = (directionToTarget * accelerationMagnitude) * scaleFactor;
+            curveAcceleration = Vector3.ClampMagnitude(curveAcceleration, Mathf.Max(curveAcceleration.magnitude, curveMax));
+
+            Debug.Log("Curve acceleration: " + curveAcceleration);
+        }
+        else
+        {
+            curveAcceleration = Vector3.zero;
+        }
+    }
+
+
+    private void ApplyCurve()
+    {
+        if (curveAcceleration != Vector3.zero)
+        {
+            Debug.Log("Applying curve: " + curveAcceleration);
+        }
+        else
+        {
+            Debug.Log("Curve acceleration is zero");
         }
 
-
+        ballRigidbody.AddForce(curveAcceleration * Time.deltaTime, ForceMode.Acceleration);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerHands"))
         {
-            //Debug.Log("Trigger exit detected with PlayerHands");
-            AdjustTrajectory();
+            Debug.Log("Exited PlayerHands");
+            applyCurve = true;
+            Debug.Log("applyCurve set to true");
+            initialVelocity = ballRigidbody.velocity;
+            CalculateCurveAcceleration();
         }
     }
-    /*
-    void OnCollisionExit(Collision collision)
+
+    public void DisableCurve()
     {
-        // Check if the object the ball is no longer in contact with is the player's hand
-        if (collision.gameObject.CompareTag("PlayerHands"))
+        applyCurve = false;
+    }
+
+    private void Update()
+    {
+        if (applyCurve)
         {
-            // Call your AdjustTrajectory method here
-            Debug.Log("Collision exit detected");
-            AdjustTrajectory();
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer > distanceToTarget)
+            {
+                Debug.Log("Disabling curve");
+                applyCurve = false;
+            }
+            else
+            {
+                ApplyCurve();
+            }
         }
     }
-    */
 }

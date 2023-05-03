@@ -9,7 +9,7 @@ public class ReturnToSpawn : MonoBehaviour
     public float minY = 0;
 
     private Rigidbody rb;
-
+    private BallTrajectoryAdjustmentManual ballTrajectoryAdjustmentManual;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class ReturnToSpawn : MonoBehaviour
         initialPosition = this.transform.position;
 
         rb = GetComponent<Rigidbody>();
+        ballTrajectoryAdjustmentManual = GetComponent<BallTrajectoryAdjustmentManual>();
 
         StartCoroutine(CheckPositionAndReset());
     }
@@ -27,8 +28,6 @@ public class ReturnToSpawn : MonoBehaviour
         //StartCoroutine(CheckPositionAndReset());
     }
 
-
-
     private IEnumerator CheckPositionAndReset()
     {
         while (true)
@@ -38,11 +37,12 @@ public class ReturnToSpawn : MonoBehaviour
                 transform.position = initialPosition;
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
+
+                // Disable trajectory adjustment and acceleration
+                ballTrajectoryAdjustmentManual.DisableAcceleration();
             }
 
             yield return new WaitForSeconds(updateInterval);
         }
     }
-
-
 }

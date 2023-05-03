@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7147530562734519490, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7147530562734519491, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: m_RootOrder
@@ -780,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419937293532398298, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5419937293532398301, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_RootOrder
@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419937294994736467, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5913026534875675327, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_Layer
@@ -840,7 +840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913026534875675327, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
@@ -903,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Name
       value: BallThrowable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
@@ -971,6 +975,10 @@ PrefabInstance:
     - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Name
       value: BallThrowable (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
@@ -2614,8 +2622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476a45c8d1ffad349b303f8fdeb617af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customGravity: {x: 0, y: -1, z: 0}
---- !u!114 &461528496
+  customGravity: {x: 0, y: -1.6, z: 0}
+--- !u!114 &461528512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2624,12 +2632,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 461528462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5ea1ff6983a114b8e0f031ac2d8c8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7705ec2372329dd4aa920fef01b0f00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1315630008}
-  adjustmentPercentage: 0.11
-  angleThreshold: 30
+  player: {fileID: 1696396404}
+  scaleFactor: 1
+  curveMax: 0.1
 --- !u!64 &470219349 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 2383871859418639030, guid: 9f0817b3e95d120469af0aa4986cb73d, type: 3}
@@ -3608,6 +3617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallThrowable (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
 --- !u!1 &541153152
@@ -4062,7 +4075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566574156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7, y: 0.83, z: -0.5}
+  m_LocalPosition: {x: -0.165, y: 0.83, z: 0.199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4087,7 +4100,7 @@ MonoBehaviour:
   launchInterval: 4
   launchSpeed: 6
   launchEnabled: 1
-  _customGravity: {x: 0, y: -5, z: 0}
+  _customGravity: {x: 0, y: 0, z: 0}
 --- !u!114 &577461181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3654262406139657241, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
@@ -5211,7 +5224,7 @@ Transform:
   - {fileID: 392059403}
   - {fileID: 559177596}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &668643542
 GameObject:
@@ -5539,7 +5552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479229218, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 206931871687596337, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -5547,7 +5560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 206931871687596337, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2781004746544239580, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -5571,7 +5584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3282029262929392829, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3282029263655771826, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_RootOrder
@@ -5627,7 +5640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3282029263655771837, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414864589318482299, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
+      propertyPath: m_Radius
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 3414864589318482299, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_IsTrigger
@@ -5639,7 +5656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608189986957844895, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5274135674856270696, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -5647,7 +5664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274135674856270696, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6141351533274568304, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: _syntheticHand
@@ -5659,7 +5676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524685080250502911, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7351779112159494444, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -5667,7 +5684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351779112159494444, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8199943907985717667, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_IsTrigger
@@ -6656,7 +6673,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1032930287046362249, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1032930287046362249, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6701,6 +6718,10 @@ PrefabInstance:
     - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Name
       value: BallThrowable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1032930288814188722, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: _travellingData._travelSpeed
@@ -7489,7 +7510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7147530562734519490, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7147530562734519491, guid: 2487a3ae4f1630d439ce4a3e9ac03c7b, type: 3}
       propertyPath: m_RootOrder
@@ -8054,7 +8075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419937293532398298, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5419937293532398301, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_RootOrder
@@ -8106,7 +8127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419937294994736467, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5913026534875675327, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_Layer
@@ -8114,7 +8135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913026534875675327, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424c2298facd2bf419beffd69e8cc855, type: 3}
@@ -8268,7 +8289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479229218, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 206931871687596337, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -8276,7 +8297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 206931871687596337, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2781004746544239580, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -8300,7 +8321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3282029262929392829, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3282029263655771826, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_RootOrder
@@ -8356,7 +8377,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3282029263655771837, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414864589318482299, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
+      propertyPath: m_Radius
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 3414864589318482299, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_IsTrigger
@@ -8368,7 +8393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608189986957844895, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5274135674856270696, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -8376,7 +8401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5274135674856270696, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6141351533274568304, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: _syntheticHand
@@ -8388,7 +8413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524685080250502911, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7351779112159494444, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_Layer
@@ -8396,7 +8421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351779112159494444, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8199943907985717667, guid: 885ecae56b16f13428a67de5ae482a72, type: 3}
       propertyPath: m_IsTrigger
@@ -9117,7 +9142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221076440376301697, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 221076440402779882, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -9181,7 +9206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 851011563720913258, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 867179514271717718, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -9189,7 +9214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 867179514271717718, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1138538782677807300, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -9197,7 +9222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1138538782677807300, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1232454304652776450, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -9225,7 +9250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1534063489508958937, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2491020024502472279, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -9465,7 +9490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3281206119671778663, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3281206119709285605, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -10233,7 +10258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380430841826623781, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4535125653554663578, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -10249,7 +10274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4559098033352713228, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4668700957653529057, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -10261,7 +10286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668700957653529057, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4668700957653529059, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: _hand
@@ -10285,7 +10310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866670847066935929, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7681372687013864540, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Name
@@ -10345,7 +10370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781169477807151282, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7935451477373020869, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_Layer
@@ -10353,7 +10378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7935451477373020869, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_TagString
-      value: PlayerHands
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8834159752304750001, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: _interactors.Array.size
@@ -11000,6 +11025,10 @@ PrefabInstance:
     - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
       propertyPath: m_Name
       value: BallThrowable (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032930287046362266, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb0a6a8d3116164bb39d4ab084fc200, type: 3}
