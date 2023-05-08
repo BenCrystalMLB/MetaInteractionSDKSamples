@@ -43,7 +43,7 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
             // Calculate the distance between the player and the target
             Debug.Log("Angle within range");
 
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget =(transform.position - target.position).sqrMagnitude;
             float initialVelocityMagnitude = initialVelocity.magnitude;
 
             // If throw is invalid, return
@@ -60,7 +60,7 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
             // Calculate the amount of time it would take for the ball to travel that distance given its initial velocity
             float timeToReachTarget = distanceToTarget / initialVelocityMagnitude;
             Vector3 finalBallPosition = transform.position + initialVelocity * timeToReachTarget;
-            float distanceToFinalBallPosition = Vector3.Distance(finalBallPosition, target.position);
+            float distanceToFinalBallPosition = (finalBallPosition - target.position).sqrMagnitude;
 
             if (timeToReachTarget == 0f)
             {

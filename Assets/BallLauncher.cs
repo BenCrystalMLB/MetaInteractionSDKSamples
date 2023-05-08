@@ -96,7 +96,7 @@ public class BallLauncher : MonoBehaviour
 
     private float CalculateMinimumLaunchSpeed(Vector3 targetPosition)
     {
-        float distance = Vector3.Distance(new Vector3(targetPosition.x, 0, targetPosition.z), new Vector3(transform.position.x, 0, transform.position.z));
+        float distance = (new Vector3(targetPosition.x, 0, targetPosition.z) - new Vector3(transform.position.x, 0, transform.position.z)).sqrMagnitude;
         float heightDifference = targetPosition.y - transform.position.y;
         float gravity = ballObject.GetComponent<Ball>().GetCustomGravity().magnitude;
 
@@ -126,7 +126,7 @@ public class BallLauncher : MonoBehaviour
 
     private Vector3 CalculateLaunchVelocity(Vector3 direction, float speed)
     {
-        float distance = Vector3.Distance(player.position, transform.position);
+        float distance = (player.position - transform.position).sqrMagnitude;
         float gravity = ballObject.GetComponent<Ball>().GetCustomGravity().magnitude;
         //float gravity = ballObject.GetComponent<Ball>().customGravity.magnitude; // Physics.gravity.magnitude;
 

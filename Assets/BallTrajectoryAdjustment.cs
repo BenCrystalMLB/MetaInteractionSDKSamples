@@ -28,7 +28,7 @@ public class BallTrajectoryAdjustment : MonoBehaviour
         {
             Debug.Log("Angle within range");
 
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = (transform.position - target.position).sqrMagnitude;
             float initialVelocityMagnitude = initialVelocity.magnitude;
 
             if (initialVelocityMagnitude == 0f)
@@ -40,7 +40,7 @@ public class BallTrajectoryAdjustment : MonoBehaviour
 
             float timeToReachTarget = distanceToTarget / initialVelocityMagnitude;
             Vector3 finalBallPosition = transform.position + initialVelocity * timeToReachTarget;
-            float distanceToFinalBallPosition = Vector3.Distance(finalBallPosition, target.position);
+            float distanceToFinalBallPosition = (finalBallPosition - target.position).sqrMagnitude;
 
             if (timeToReachTarget == 0f)
             {
@@ -97,8 +97,8 @@ public class BallTrajectoryAdjustment : MonoBehaviour
     {
         if (applyCurve)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            float distanceToTarget = (transform.position - target.position).sqrMagnitude;
+            float distanceToPlayer = (transform.position - player.position).sqrMagnitude;
 
             if (distanceToPlayer > distanceToTarget)
             {
