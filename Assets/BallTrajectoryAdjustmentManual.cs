@@ -43,6 +43,10 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
             // Calculate the distance between the player and the target
             Debug.Log("Angle within range");
 
+            // Set maxAcceleratingDistance to the initial distance between the player and the target
+            maxAcceleratingDistance = (player.position - target.position).sqrMagnitude;
+
+
             float distanceToTarget =(transform.position - target.position).sqrMagnitude;
             float initialVelocityMagnitude = initialVelocity.magnitude;
 
@@ -80,10 +84,7 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
             // DO I WANT THE ACCELERATION MAGNITUDE OR DO I WANT A VECTOR???
             // It depends-- if we change this back to magnitude we can multiply by a vector in the direction of the target to rescale
 
-            // float accelerationMagnitude = (2 * (distanceToFinalBallPosition - distanceToTarget) - initialVelocityMagnitude * timeToReachTarget) / (timeToReachTarget * timeToReachTarget);
-            // float accelerationMagnitude = (2 * (finalBallPosition - transform.position) - (initialVelocity * timeToReachTarget)) / (timeToReachTarget * timeToReachTarget);
-            // float accelerationMagnitude = (2 * (target.position - transform.position - initialVelocity * timeToReachTarget)).magnitude / (timeToReachTarget * timeToReachTarget);
-
+            
             // Calculate the acceleration using (finalposition) = initialposition + initialvelocity*time + (acceleration*time^2)/2 rearranged for acceleration
             accelerationForceVector = (2 * (target.position - transform.position - initialVelocity * timeToReachTarget)) / (timeToReachTarget * timeToReachTarget);
 

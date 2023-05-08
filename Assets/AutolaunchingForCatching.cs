@@ -30,7 +30,7 @@ public class AutolaunchingForCatching : MonoBehaviour
     {
         GameObject thrownObject = Instantiate(prefabToThrow, transform.position, transform.rotation);
         Vector3 throwDirection = (characterTransform.position - transform.position).normalized;
-        float distanceToCharacter = Vector3.Distance(transform.position, characterTransform.position);
+        float distanceToCharacter = (transform.position - characterTransform.position).sqrMagnitude;
         float throwDuration = distanceToCharacter / throwForce;
         float maxArcHeight = arcHeight + distanceToCharacter / 10f;
         Vector3 arcMidPoint = transform.position + throwDirection * distanceToCharacter * 0.5f + Vector3.up * maxArcHeight;

@@ -8,12 +8,14 @@ using UnityEngine;
 
 public class BallLauncher : MonoBehaviour
 {
-    [SerializeField] private GameObject ballObject;
-    [SerializeField] private Transform player;
-    [SerializeField] private float launchInterval = 5f;
-    [SerializeField] private float launchSpeed = 10f;
-    [SerializeField] private bool launchEnabled = true;
-    [SerializeField] private Vector3 _customGravity = new Vector3(0, -9.81f, 0);
+    public GameObject ballObject;
+    public Transform player;
+    public float launchInterval = 5f;
+    public float launchSpeed = 10f;
+    public bool launchEnabled = true;
+    public Vector3 _customGravity = new Vector3(0, -9.81f, 0);
+
+    public float launchAngle = 45f;
 
     private float timer;
 
@@ -22,7 +24,7 @@ public class BallLauncher : MonoBehaviour
         timer = launchInterval;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (launchEnabled)
         {
@@ -73,7 +75,42 @@ public class BallLauncher : MonoBehaviour
         ballRigidbody.velocity = launchVelocity;
     }
     */
+    private void LaunchBall()
+    {
+        // Reset the ball's position and velocity
+        ballObject.transform.position = transform.position;
+        Rigidbody ballRigidbody = ballObject.GetComponent<Rigidbody>();
+        ballRigidbody.velocity = Vector3.zero;
+        ballRigidbody.angularVelocity = Vector3.zero;
 
+        // Calculate launch velocity
+        Vector3 targetDirection = ((player.position - new Vector3(0,.4f,0)) - transform.position).normalized;
+        float adjustedLaunchSpeed = CalculateAdjustedLaunchSpeed(player.position, launchAngle);
+        Vector3 launchVelocity = CalculateLaunchVelocity(targetDirection, adjustedLaunchSpeed, launchAngle);
+        ballRigidbody.velocity = launchVelocity;
+    }
+    private float CalculateAdjustedLaunchSpeed(Vector3 targetPosition, float angle)
+    {
+        float distance = (new Vector3(targetPosition.x, 0, targetPosition.z) - new Vector3(transform.position.x, 0, transform.position.z)).sqrMagnitude;
+        float heightDifference = targetPosition.y - transform.position.y;
+        float gravity = ballObject.GetComponent<Ball>().GetCustomGravity().magnitude;
+        float radians = angle * Mathf.Deg2Rad;
+
+        // Calculate the required launch speed using the ballistic trajectory equation
+        float speed = Mathf.Sqrt((gravity * distance * distance) / (2 * distance * Mathf.Tan(radians) - 2 * heightDifference));
+
+        // Check if the calculated speed is a valid number
+        if (float.IsNaN(speed))
+        {
+            Debug.LogWarning("Invalid launch speed. Adjust the launch angle or distance to the player.");
+            return launchSpeed;
+        }
+
+        return speed;
+    }
+
+
+    /*
     private void LaunchBall()
     {
         // Reset the ball's position and velocity
@@ -92,7 +129,7 @@ public class BallLauncher : MonoBehaviour
         Vector3 targetDirection = (player.position - transform.position).normalized;
         Vector3 launchVelocity = CalculateLaunchVelocity(targetDirection, adjustedLaunchSpeed);
         ballRigidbody.velocity = launchVelocity;
-    }
+    }*/
 
     private float CalculateMinimumLaunchSpeed(Vector3 targetPosition)
     {
@@ -123,6 +160,14 @@ public class BallLauncher : MonoBehaviour
     }
 
 
+    private Vector3 CalculateLaunchVelocity(Vector3 direction, float speed, float angle)
+    {
+        float radians = angle * Mathf.Deg2Rad;
+        Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z).normalized;
+        Vector3 launchDirection = horizontalDirection * Mathf.Cos(radians) + Vector3.up * Mathf.Sin(radians);
+        return launchDirection * speed;
+    }
+
 
     private Vector3 CalculateLaunchVelocity(Vector3 direction, float speed)
     {
@@ -147,14 +192,14 @@ public class BallLauncher : MonoBehaviour
         return launchDirection * speed;
     }
 
-
+    /*
     private Vector3 CalculateLaunchVelocity(Vector3 direction, float speed, float angle)
     {
         float radians = angle * Mathf.Deg2Rad;
         Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z).normalized;
         Vector3 launchDirection = horizontalDirection * Mathf.Cos(radians) + Vector3.up * Mathf.Sin(radians);
         return launchDirection * speed;
-    }
+    }*/
 
     public void ToggleLaunchEnabled()
     {
