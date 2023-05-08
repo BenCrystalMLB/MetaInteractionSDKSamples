@@ -23,6 +23,9 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
     public float curveMax = .1f;
     public float maxAcceleratingDistance = 50f;
 
+    private float lastExitTime;
+    public float cooldownTime = 0.1f;
+
     private void Start()
     {
         ballRigidbody = GetComponent<Rigidbody>();
@@ -126,8 +129,9 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("PlayerHands"))
+        if (other.gameObject.CompareTag("PlayerHands") && Time.time - lastExitTime > cooldownTime)
         {
+            lastExitTime = Time.time;
             Debug.Log("Exited PlayerHands");
             isAccelerating = true;
             Debug.Log("isAccelerating set to true");
@@ -136,6 +140,7 @@ public class BallTrajectoryAdjustmentManual : MonoBehaviour
             CalculateAdjustmentAcceleration();
         }
     }
+
 
     // Called in other scripts and methods to disable the acceleration force when the ball is respawned, caught, etc.
     public void DisableAcceleration()
